@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: cluster-demo-1    # TODO: update to cluster name
+  PROJECT_ID: shaked-ilan
+  GKE_CLUSTER: cluster-1    # TODO: update to cluster name
   GKE_ZONE: us-central1-c   # TODO: update to cluster zone
 
 
@@ -74,10 +74,10 @@ jobs:
     - name: kubectl - Google Cloud GKE cluster.
       uses: ameydev/gke-kubectl-action@master
       env:
-        PROJECT_ID: ${{ env.PROJECT_ID }}
+        PROJECT_ID: shaked-ilan
         APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
-        CLUSTER_NAME: ${{ env.GKE_CLUSTER }}
-        ZONE_NAME: ${{ env.GKE_ZONE }}
+        CLUSTER_NAME: cluster-1
+        ZONE_NAME: us-central1-c
       with:
         args: apply -f k8s/
 
